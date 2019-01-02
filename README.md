@@ -16,5 +16,6 @@ foreach { Set-ItemProperty -Path "$key\$($_.pschildname)" -Name NetbiosOptions -
 
 Query a registry key:
 ```
-$key = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" Get-ChildItem $key | foreach { Get-ItemProperty -Path "$key\$($_.pschildname)" -Name NetbiosOptions}
+$key = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" Get-ChildItem $key | 
+foreach { Get-ItemProperty -Path "$key\$($_.pschildname)" -Name NetbiosOptions}
 ```
