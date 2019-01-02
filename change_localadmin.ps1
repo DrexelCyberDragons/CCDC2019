@@ -10,7 +10,7 @@ Else
     {
     #Query local admin user
     $admin_user = Get-LocalUser -Name "Administrator"
-    # If there is a local user named Administrator
+    # If there is not a local user named Administrator
     If (!$admin_user){
         'Is the admin account named something different? Here is the local admin group:'
         # Query local admin group
@@ -27,7 +27,7 @@ Else
         }
     }
 
-    # If there is no user named Administrator
+    # If there is a user named Administrator
     Else {
         net user $admin_user $password
         'password changed'
