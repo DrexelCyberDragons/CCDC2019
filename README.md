@@ -9,8 +9,7 @@ Various Powershell Scripts(probably should compile into a single run script)
 
 
 Disable Netbios:
-'''
-$key = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces"
-Get-ChildItem $key |
-foreach { Set-ItemProperty -Path "$key\$($_.pschildname)" -Name NetbiosOptions -Value 2 -Verbose}
-'''
+```
+$key = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" Get-ChildItem $key | 
+foreach { Set-ItemProperty -Path "$key\$($\_.pschildname)" -Name NetbiosOptions -Value 2 -Verbose} 
+```
