@@ -25,13 +25,12 @@ foreach ($line in $HostFileData) {
     echo $PSCredentialUsername
     $Credential = New-Object System.Management.Automation.PSCredential($PSCredentialUsername, $SecureStringPassword)
 
-    <#
     # this takes wayyy too long...need to quicken this up
     $LogFilename = $Computer + "_PowerShell_EventLogs.xml"
+    Write-Host Pulling Sysmon logs from $Computer
     $Events = Get-WinEvent -LogName Microsoft-Windows-Sysmon/Operational -ComputerName $Computer -Credential $Credential -Oldest
     Write-Host Pulled $Events.count events
     $Events | Export-Clixml $LogFilename
-    #>
 
     if($SysmonView) {
         $LogFilename = $Computer + "_SysmonView_EventLogs.xml"
