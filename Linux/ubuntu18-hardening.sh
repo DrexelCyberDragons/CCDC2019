@@ -32,7 +32,6 @@ sudo mv security2patch.conf /etc/apache2/mods-enabled/security2.conf
 sudo systemctl restart apache2
 
 ##Patch sshd_config
-
 sudo diff sshd_config /etc/ssh/sshd_config > sshd_config.patch
 sudo patch -l /etc/ssh/sshd_config sshd_config.patch
 
@@ -45,3 +44,11 @@ sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
 sudo sysctl -p
 
 ##Patch Network to
+
+##Install ntp
+sudo apt-get install ntp ntpdate -y
+sudo systemctl start ntp
+sudo systemctl enable ntp
+sudo ntpdate -q 0.rhel.pool.ntp.org
+sudo timedatectl set-timezone "America/New_York"
+sudo systemctl restart ntp

@@ -1,4 +1,4 @@
-### CentOS
+### CentOS 7
 
 ## Add user to wheel group (sudoers)
 #usermod -aG wheel user
