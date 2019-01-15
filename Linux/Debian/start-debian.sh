@@ -17,3 +17,9 @@ su alfonzo
 sudo passwd -ld root
 
 sudo passwd -aS | grep " P \| NP " > passenabled.txt
+
+## Tools
+
+sudo apt-get upgrade -y
+sudo apt-get update -y
+sudo apt-get install vim -y

@@ -19,3 +19,9 @@ usermod -aG wheel nick
 su alfonzo
 sudo passwd -l root
 sudo passwd -d root
+
+## Tools
+
+sudo yum upgrade -y
+sudo yum update -y
+sudp yum install vim -y
