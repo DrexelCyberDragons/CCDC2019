@@ -8,6 +8,14 @@ useradd sam
 passwd sam
 usermod -aG wheel sam
 
+useradd colbert
+passwd colbert
+usermod -aG wheel colbert
+
+useradd nick
+passwd nick
+usermod -aG wheel nick
+
 su alfonzo
 sudo passwd -l root
 sudo passwd -d root

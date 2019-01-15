@@ -12,4 +12,7 @@ sudo sysctl -p
 #sudo diff sshd_config /etc/ssh/sshd_config > sshd_config.patch
 #sudo patch -l /etc/ssh/sshd_config sshd_config.patch
 
-sudo apt-get install auditd -y
+#sudo apt-get install auditd -y
+#https://github.com/DrexelCyberDragons/CCDC2019/tree/master/Linux
+#https://github.com/Neo23x0/auditd
+#https://raw.githubusercontent.com/Neo23x0/auditd/master/audit.rules
