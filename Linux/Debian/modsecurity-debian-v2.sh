@@ -3,7 +3,7 @@
 #disable rule host header is numeric IP address
 #'Host header is a numeric IP address' id:920350
 # In REQUEST-920
-
+sudo su
 sudo apt-get install libapache2-mod-security2 -y
 sudo mkdir /etc/apache2/modsecurity.d
 cd /etc/apache2/modsecurity.d
@@ -19,3 +19,4 @@ sudo mv /etc/modsecurity/modsecurity.conf-recommended /etc/modsecurity/modsecuri
 sudo sed -i "s/SecRuleEngine DetectionOnly/SecRuleEngine On/" /etc/modsecurity/modsecurity.conf
 sudo sysemctl restart apache2
 # If Error journalctl -xe | less
+exit

@@ -24,4 +24,4 @@ sudo passwd -d root
 
 sudo yum upgrade -y
 sudo yum update -y
-sudosud yum install vim -y
+sudo yum install vim -y
