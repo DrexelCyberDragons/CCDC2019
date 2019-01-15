@@ -1,19 +1,19 @@
 ### Starter script
 
 useradd alfonzo
-passwd alfonzo
+echo "cyberdragons" | passwd alfonzo --stdin
 usermod -aG wheel alfonzo
 
 useradd sam
-passwd sam
+echo "cyberdragons" | passwd sam --stdin
 usermod -aG wheel sam
 
 useradd colbert
-passwd colbert
+echo "cyberdragons" | passwd colbert --stdin
 usermod -aG wheel colbert
 
 useradd nick
-passwd nick
+echo "cyberdragons" | passwd nick --stdin
 usermod -aG wheel nick
 
 su alfonzo
@@ -24,4 +24,4 @@ sudo passwd -d root
 
 sudo yum upgrade -y
 sudo yum update -y
-sudp yum install vim -y
+sudosud yum install vim -y
