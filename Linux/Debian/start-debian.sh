@@ -2,10 +2,14 @@
 
 ## Create sudoer account & disable root
 
-adduser --gecos "" alfonzo
-adduser --gecos "" sam
-adduser --gecos "" colbert
-adduser --gecos "" nick
+useradd alfonzo
+(echo "cyberdragons" & "cyberdragons") | passwd alfonzo
+useradd sam
+(echo "cyberdragons" & "cyberdragons") | passwd sam
+useradd colbert
+(echo "cyberdragons" & "cyberdragons") | passwd colbert
+useradd nick
+(echo "cyberdragons" & "cyberdragons") | passwd nick
 
 usermod -aG sudo alfonzo
 usermod -aG sudo sam
