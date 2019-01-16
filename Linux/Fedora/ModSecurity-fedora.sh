@@ -1,6 +1,5 @@
 ### Fedora ModSecurity
 
-sudo su
 sudo yum install mod_security mod_security_crs -y
 sudo sed -i "s/SecRuleEngine DetectionOnly/SecRuleEngine On/" /etc/httpd/conf.d/mod_security.conf
 sudo service httpd restart
@@ -14,4 +13,3 @@ echo "<IfModule security2_module>
                 Include modsecurity.d/owasp-modsecurity-crs/rules/*.conf
     </IfModule>" >> /etc/httpd/conf/httpd.conf
 sudo service httpd restart
-exit

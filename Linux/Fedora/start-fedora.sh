@@ -16,7 +16,6 @@ useradd nick
 echo "cyberdragons" | passwd nick --stdin
 usermod -aG wheel nick
 
-su alfonzo
 sudo passwd -l root
 sudo passwd -d root
 
