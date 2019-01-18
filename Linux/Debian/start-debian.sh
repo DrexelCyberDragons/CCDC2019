@@ -3,17 +3,13 @@
 ## Create sudoer account & disable root
 
 useradd alfonzo
-#(echo "cyberdragons" & "cyberdragons") | passwd alfonzo
-passwd alfonzo
+echo "cyberdragons\ncyberdragons" | passwd alfonzo
 useradd sam
-#(echo "cyberdragons" & "cyberdragons") | passwd sam
-passwd sam
+echo "cyberdragons\ncyberdragons" | passwd sam
 useradd colbert
-#(echo "cyberdragons" & "cyberdragons") | passwd colbert
-passwd colbert
+echo "cyberdragons\ncyberdragons" | passwd colbert
 useradd nick
-#(echo "cyberdragons" & "cyberdragons") | passwd nick
-passwd nick
+echo "cyberdragons\ncyberdragons" | passwd nick
 
 usermod -aG sudo alfonzo
 usermod -aG sudo sam
