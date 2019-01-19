@@ -1,3 +1,5 @@
+grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g" > wheel.bk
+
 for i in $(grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 	if [ "$i" = "alfonzo" ] ; then
 		continue

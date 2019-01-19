@@ -1,3 +1,5 @@
+grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g" > sudo.bk
+
 for i in $(grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 	if [ "$i" = "alfonzo" ] ; then
 		continue
