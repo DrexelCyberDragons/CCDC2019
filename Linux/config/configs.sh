@@ -13,4 +13,6 @@ mv skel /etc/
 ### bashrc replacement
 
 rm -rf /etc/bashrc
+rm -rf /etc/bash.bashrc
 mv bashrc /etc/
+mv bash.bashrc /etc/
