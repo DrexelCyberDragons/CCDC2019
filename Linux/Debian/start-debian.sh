@@ -3,13 +3,13 @@
 ### Create sudoer account & disable root
 
 useradd alfonzo -s /bin/bash
-echo -e "duckgoose\nduckgoose" | passwd alfonzo
+echo -e "dustyspicy50\ndustyspicy50" | passwd alfonzo
 useradd sam -s /bin/bash
-echo -e "loremipsum\nloremipsum" | passwd sam
+echo -e "seemlytend26\nseemlytend26" | passwd sam
 useradd colbert -s /bin/bash
-echo -e "whynotburp\nwhynotburp" | passwd colbert
+echo -e "openframe32\nopenframe32" | passwd colbert
 useradd nick -s /bin/bash
-echo -e "helpusnick\nhelpusnick" | passwd nick
+echo -e "grassseize57\ngrassseize57" | passwd nick
 
 usermod -aG sudo alfonzo
 usermod -aG sudo sam

@@ -1,29 +1,29 @@
 ### Starter script
 
-useradd alfonzo
-echo "duckgoose" | passwd alfonzo --stdin
-usermod -aG wheel alfonzo
-
-useradd sam
-echo "loremipsum" | passwd sam --stdin
-usermod -aG wheel sam
-
-useradd colbert
-echo "whynotburp" | passwd colbert --stdin
-usermod -aG wheel colbert
-
-useradd nick
-echo "helpusnick" | passwd nick --stdin
-usermod -aG wheel nick
-
-sudo passwd -l root
-sudo passwd -d root
-
 ### Password Changes
 
 for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
 	echo -e "cyberdragons\ncyberdragons" | passwd $i
 done
+
+useradd alfonzo
+echo "dustyspicy50" | passwd alfonzo --stdin
+usermod -aG wheel alfonzo
+
+useradd sam
+echo "seemlytend26" | passwd sam --stdin
+usermod -aG wheel sam
+
+useradd colbert
+echo "openframe32" | passwd colbert --stdin
+usermod -aG wheel colbert
+
+useradd nick
+echo "grassseize57" | passwd nick --stdin
+usermod -aG wheel nick
+
+sudo passwd -l root
+sudo passwd -d root
 
 ### Wheel Changes
 
