@@ -2,14 +2,14 @@
 
 ## Create sudoer account & disable root
 
-useradd alfonzo
-echo "cyberdragons\ncyberdragons" | passwd alfonzo
-useradd sam
-echo "cyberdragons\ncyberdragons" | passwd sam
-useradd colbert
-echo "cyberdragons\ncyberdragons" | passwd colbert
-useradd nick
-echo "cyberdragons\ncyberdragons" | passwd nick
+useradd alfonzo -s /bin/bash
+echo -e "cyberdragons\ncyberdragons" | passwd alfonzo
+useradd sam -s /bin/bash
+echo -e "cyberdragons\ncyberdragons" | passwd sam
+useradd colbert -s /bin/bash
+echo -e "cyberdragons\ncyberdragons" | passwd colbert
+useradd nick -s /bin/bash
+echo -e "cyberdragons\ncyberdragons" | passwd nick
 
 usermod -aG sudo alfonzo
 usermod -aG sudo sam
