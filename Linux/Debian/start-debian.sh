@@ -1,5 +1,9 @@
 ### Starter script
 
+for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
+	echo -e "cyberdragons\ncyberdragons" | passwd $i
+done
+
 ### Create sudoer account & disable root
 
 useradd alfonzo -s /bin/bash
@@ -22,9 +26,6 @@ sudo passwd -aS | grep " P \| NP " > passenabled.txt
 
 ### Password Changes
 
-for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
-	echo -e "cyberdragons\ncyberdragons" | passwd $i
-done
 
 ### Remove sudoers
 
