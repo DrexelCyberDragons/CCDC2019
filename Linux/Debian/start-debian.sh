@@ -64,6 +64,10 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
   fi
 done
 
+### Version
+
+cat /etc/os-release > version.txt
+
 ### Tools
 
 sudo apt-get upgrade -y

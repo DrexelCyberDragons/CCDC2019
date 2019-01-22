@@ -4,6 +4,7 @@
 #'Host header is a numeric IP address' id:920350
 # In REQUEST-920
 
+sudo apt-get install apache2 -y
 sudo apt-get install libapache2-mod-security2 -y
 sudo mkdir /etc/apache2/modsecurity.d
 cd /etc/apache2/modsecurity.d
