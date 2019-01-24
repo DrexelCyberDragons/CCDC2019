@@ -1,12 +1,46 @@
 ### iptables configuration
 
-## Basic Rule structure
-iptables -A INPUT -p tcp -m tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
-iptables -A INPUT -p tcp -m tcp --dport 22 -m state --state NEW,ESTABLISHED -j ACCEPT
+### Save current iptables config and flush iptables
 
-## Don't know what these do
-#iptables -A INPUT -I lo -j ACCEPT #Doesn't work
+iptables-save > old-iptables.bk
+#iptables-restore < iptables.bk
+iptables -F
+
+### Accept traffic for established sessions ?
+
+#iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+### Basic accept chain rules
+
+## Incoming
+
+iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+iptables -A INPUT -p tcp --dport http -j ACCEPT
+iptables -A INPUT -p tcp --dport https -j ACCEPT
+iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
+
+## Outgoing
+
+iptables -A OUTPUT -p tcp --dport ssh -j ACCEPT
+iptables -A OUTPUT -p tcp --dport http -j ACCEPT
+iptables -A OUTPUT -p tcp --dport https -j ACCEPT
+iptables -A OUTPUT -p tcp --dport http-alt -j ACCEPT
+
+### Drop all packets that do not have rules
+
 iptables -A INPUT -j DROP
+#iptables -A OUTPUT -j DROP
 
-##Drop all packets that don't have rule
-iptables -P INPUT DROP
+### Block specific IP's
+
+#iptables -A INPUT -s 202.54.20.22 -j DROP
+#iptables -A OUTPUT -d 202.54.20.22 -j DROP
+
+### Log Dropped Packets to Syslog
+
+iptables -I INPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+iptables -I OUTPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+
+### Backup desired Configuration
+
+iptables-save > new-iptables.bk

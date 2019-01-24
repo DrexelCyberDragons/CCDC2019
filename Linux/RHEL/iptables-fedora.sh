@@ -1,12 +1,46 @@
-### Fedora iptables
+### iptables configuration
 
-#sudo iptables-save > iptables.dump
-#sudo ip6tables-save > ip6tables.dump
-#sudo iptables -F
-#sudo ip6tables -F
+### Save current iptables config and flush iptables
 
+iptables-save > old-iptables.bk
+#iptables-restore < iptables.bk
+iptables -F
 
-sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+### Accept traffic for established sessions ?
 
-# ip6tables -L
+#iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+### Basic accept chain rules
+
+## Incoming
+
+iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+iptables -A INPUT -p tcp --dport http -j ACCEPT
+iptables -A INPUT -p tcp --dport https -j ACCEPT
+iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
+
+## Outgoing
+
+iptables -A OUTPUT -p tcp --dport ssh -j ACCEPT
+iptables -A OUTPUT -p tcp --dport http -j ACCEPT
+iptables -A OUTPUT -p tcp --dport https -j ACCEPT
+iptables -A OUTPUT -p tcp --dport http-alt -j ACCEPT
+
+### Drop all packets that do not have rules
+
+iptables -A INPUT -j DROP
+#iptables -A OUTPUT -j DROP
+
+### Block specific IP's
+
+#iptables -A INPUT -s 202.54.20.22 -j DROP
+#iptables -A OUTPUT -d 202.54.20.22 -j DROP
+
+### Log Dropped Packets to Syslog
+
+iptables -I INPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+iptables -I OUTPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+
+### Backup desired Configuration
+
+iptables-save > new-iptables.bk
