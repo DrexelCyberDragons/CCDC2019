@@ -8,7 +8,8 @@ sudo apt-get install apache2 -y
 sudo apt-get install libapache2-mod-security2 -y
 sudo mkdir /etc/apache2/modsecurity.d
 cd /etc/apache2/modsecurity.d
-sudo git clone https://github.com/SpiderLabs/owasp-modsecurity-crs .
+sudo git clone https://github.com/SpiderLabs/owasp-modsecurity-crs
+cd owasp-modsecurity-crs
 sudo mv crs-setup.conf.example crs-setup.conf
 # Edit apache2.conf
 # sudo vim apache2.conf

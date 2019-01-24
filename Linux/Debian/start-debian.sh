@@ -38,6 +38,7 @@ for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
 		continue
 	else
 		echo -e "cyberdragons\ncyberdragons" | passwd $i
+	fi
 done
 
 ### Remove sudoers
