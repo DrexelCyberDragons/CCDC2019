@@ -1,8 +1,9 @@
 ### Starter script
 
-for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
-	echo -e "cyberdragons\ncyberdragons" | passwd $i
-done
+### Wipe /etc/skel
+
+rm -rf /etc/skel
+mv ../config/skel /etc/
 
 ### Create sudoer account & disable root
 
@@ -26,6 +27,18 @@ sudo passwd -aS | grep " P \| NP " > passenabled.txt
 
 ### Password Changes
 
+for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
+	if [ "$i" = "alfonzo" ] ; then
+		continue
+	elif [ "$i" = "sam" ] ; then
+		continue
+	elif [ "$i" = "nick" ] ; then
+		continue
+	elif [ "$i" = "colbert" ] ; then
+		continue
+	else
+		echo -e "cyberdragons\ncyberdragons" | passwd $i
+done
 
 ### Remove sudoers
 
@@ -71,6 +84,6 @@ cat /etc/os-release > version.txt
 
 ### Tools
 
-sudo apt-get upgrade -y
+#sudo apt-get upgrade -y
 sudo apt-get update -y
 sudo apt-get install vim -y

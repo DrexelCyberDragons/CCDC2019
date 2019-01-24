@@ -1,10 +1,11 @@
 ### Starter script
 
-### Password Changes
+### Wipe /etc/skel
 
-for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
-	echo -e "cyberdragons\ncyberdragons" | passwd $i
-done
+rm -rf /etc/skel
+mv ../config/skel /etc/
+
+### Create our user accounts
 
 useradd alfonzo
 echo "dustyspicy50" | passwd alfonzo --stdin
@@ -24,6 +25,21 @@ usermod -aG wheel nick
 
 sudo passwd -l root
 sudo passwd -d root
+
+### Password Changes
+
+for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
+	if [ "$i" = "alfonzo" ] ; then
+		continue
+	elif [ "$i" = "sam" ] ; then
+		continue
+	elif [ "$i" = "nick" ] ; then
+		continue
+	elif [ "$i" = "colbert" ] ; then
+		continue
+	else
+		echo -e "cyberdragons\ncyberdragons" | passwd $i
+done
 
 ### Wheel Changes
 
@@ -69,6 +85,6 @@ cat /etc/os-release > version.txt
 
 ## Tools
 
-sudo yum upgrade -y
+#sudo yum upgrade -y
 sudo yum update -y
 sudo yum install vim -y
