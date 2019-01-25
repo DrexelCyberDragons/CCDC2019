@@ -3,6 +3,7 @@
 
 # What ports, IPs and protocols we listen for
 Port 22
+AddressFamily inet
 # Use these options to restrict which interfaces/protocols sshd will bind to
 #ListenAddress ::
 #ListenAddress 0.0.0.0
@@ -62,11 +63,17 @@ ChallengeResponseAuthentication no
 #GSSAPICleanupCredentials yes
 
 X11Forwarding no
+AllowAgentForwarding no
+AllowTcpForwarding no
 X11DisplayOffset 10
 PrintMotd no
 PrintLastLog yes
 TCPKeepAlive yes
 #UseLogin no
+
+ClientAliveInterval 300
+ClientAliveCountMax 3
+UseDNS no
 
 #MaxStartups 10:30:60
 #Banner /etc/issue.net

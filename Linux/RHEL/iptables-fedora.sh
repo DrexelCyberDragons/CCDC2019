@@ -8,7 +8,7 @@ iptables -F
 
 ### Accept traffic for established sessions ?
 
-#iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 ### Basic accept chain rules
 
