@@ -6,9 +6,10 @@ iptables-save > old-iptables.bk
 #iptables-restore < iptables.bk
 iptables -F
 
-### Accept traffic for established sessions ?
-
+### Accept traffic for established sessions ?\
+#Firewallcmd or iptables-persistent
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+#mirror this?
 
 ### Basic accept chain rules
 

@@ -1,5 +1,10 @@
 ### Starter script
 
+## host scripts on webserver - curl and pipe to bash
+## ansible wrapper script to create backups - execute scripts
+##		pull back files and delete files on multiple hosts at once.
+
+
 ### Wipe /etc/skel
 
 rm -rf /etc/skel
@@ -78,6 +83,9 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
     usermod -s /usr/sbin/nologin $i
   fi
 done
+
+# Disable password auth -> key auth to users and root user
+# give nagios a key as well
 
 ### Version
 

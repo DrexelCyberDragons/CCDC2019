@@ -20,3 +20,15 @@ sudo systemctl enable auditd
 sudo apt-get install fail2ban -y
 sudo systemctl start fail2ban
 sudo systemctl enable fail2ban
+
+## Configure jail.conf
+# "ignoreip" can be an IP address, a CIDR mask or a DNS host. Fail2ban will not
+# ban a host which matches an address in this list. Several addresses can be
+# defined using space separator.
+
+#ignoreip = 127.0.0.1 192.168.1.0/24 8.8.8.8
+
+# This will ignore connection coming from common private networks.
+# Note that local connections can come from other than just 127.0.0.1, so
+# this needs CIDR range too.
+#ignoreip = 127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
