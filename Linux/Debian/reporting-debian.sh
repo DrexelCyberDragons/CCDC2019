@@ -32,3 +32,13 @@ sudo systemctl enable fail2ban
 # Note that local connections can come from other than just 127.0.0.1, so
 # this needs CIDR range too.
 #ignoreip = 127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16
+
+### Sending Logs
+
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-amd64.deb
+sudo dpkg -i filebeat-6.5.4-amd64.deb
+
+cp filebeat.yml /etc/filebeat/
+
+filebeat setup --dashboards
+service filebeat start
