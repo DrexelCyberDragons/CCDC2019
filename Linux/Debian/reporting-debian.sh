@@ -11,7 +11,7 @@ sudo systemctl restart ntp
 
 sudo apt-get install auditd -y
 sudo rm -rf /etc/audit/rules.d/audit.rules
-sudo mv audit.rules /etc/audit/rules.d/
+sudo mv /root/config/audit.rules /etc/audit/rules.d/
 sudo systemctl start auditd
 sudo systemctl enable auditd
 
@@ -38,7 +38,7 @@ sudo systemctl enable fail2ban
 curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-amd64.deb
 sudo dpkg -i filebeat-6.5.4-amd64.deb
 
-cp filebeat.yml /etc/filebeat/
+cp /root/config/filebeat.yml /etc/filebeat/
 
 filebeat setup --dashboards
 service filebeat start

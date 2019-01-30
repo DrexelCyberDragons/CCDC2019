@@ -45,3 +45,8 @@ iptables -I OUTPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied
 ### Backup desired Configuration
 
 iptables-save > new-iptables.bk
+iptables-save > /etc/iptables/rules.v4
+
+sudo apt-get install iptstate -y
+sudo apt-get install iptables-persistent -y
+sudo service netfilter-persistent start

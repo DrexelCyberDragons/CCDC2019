@@ -8,7 +8,7 @@
 ### Wipe /etc/skel
 
 rm -rf /etc/skel
-mv ../config/skel /etc/
+mv /root/config/skel /etc/
 
 ### Create sudoer account & disable root
 
