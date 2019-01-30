@@ -10,6 +10,9 @@ me=192.168.1.190:8000
 
 ### Setting up
 
+# Adding key to host
+ssh-copy-id ${user}@${host}
+
 # Moving configs over
 ssh -t ${user}@${host} "wget ${me}/CCDC2019/Linux/configs.tar.gz"
 # Unzipping configs file
