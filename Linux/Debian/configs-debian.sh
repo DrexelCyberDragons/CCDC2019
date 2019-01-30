@@ -10,8 +10,8 @@ systemctl restart sshd
 
 rm -rf /etc/bashrc
 rm -rf /etc/bash.bashrc
-mv /root/configs/bashrc /etc/
-mv /root/configs/bash.bashrc /etc/
+mv /root/config/bashrc /etc/
+mv /root/config/bash.bashrc /etc/
 
 ## vsftp.conf replacement
 

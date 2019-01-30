@@ -28,7 +28,7 @@ usermod -aG sudo nick
 
 sudo passwd -ld root
 
-sudo passwd -aS | grep " P \| NP " > passenabled.txt
+#sudo passwd -aS | grep " P \| NP " > passenabled.txt
 
 ### Password Changes
 
