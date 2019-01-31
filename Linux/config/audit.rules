@@ -277,7 +277,8 @@
 ### because this might be a sign of someone exploiting a hole in the 32
 ### bit API.
 -a always,exit -F arch=b32 -S all -k 32bit_api
-
+-a exit,always -F arch=b64 -S execve -k process_spawn
+-a exit,always -F arch=b64 -S execveat -k process_spawn
 ## Reconnaissance
 -w /usr/bin/whoami -p x -k recon
 -w /etc/issue -p r -k recon
