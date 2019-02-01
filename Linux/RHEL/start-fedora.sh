@@ -3,7 +3,7 @@
 ### Wipe /etc/skel
 
 rm -rf /etc/skel
-mv ../config/skel /etc/
+mv ~/config/skel /etc/
 
 ### Create our user accounts
 
@@ -23,6 +23,7 @@ useradd nick
 echo "grassseize57" | passwd nick --stdin
 usermod -aG wheel nick
 
+usermod -aG wheel root
 sudo passwd -l root
 sudo passwd -d root
 
@@ -55,10 +56,16 @@ for i in $(grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 		continue
 	elif [ "$i" = "colbert" ] ; then
 		continue
+	elif [ "$i" = "root" ] ; then
+		continue
 	else
 		gpasswd -d $i wheel
 	fi
 done
+
+sudo chown root:wheel /bin/su
+sudo chmod 754 /bin/su
+sudo chmod u+s /bin/su
 
 ### No login
 
@@ -79,10 +86,6 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
     usermod -s /usr/sbin/nologin $i
   fi
 done
-
-### Version
-
-cat /etc/os-release > version.txt
 
 ## Tools
 

@@ -2,7 +2,7 @@
 
 ### sshd_config
 
-diff /etc/ssh/sshd_config ../configs/sshd_config > sshd.patch
+diff /etc/ssh/sshd_config ~/config/sshd_config > sshd.patch
 patch /etc/ssh/sshd_config < sshd.patch
 systemctl restart sshd
 
@@ -10,14 +10,14 @@ systemctl restart sshd
 
 rm -rf /etc/bashrc
 rm -rf /etc/bash.bashrc
-mv ../configs/bashrc /etc/
-mv ../configs/bash.bashrc /etc/
+mv ~/config/bashrc /etc/
+mv ~/config/bash.bashrc /etc/
 
 ## vsftp.conf replacement
 
 #rm -rf /etc/vsftpd.conf
 #mv vsftp.conf /etc/
-#diff /etc/vsftpd.conf ../configs/vsftpd.conf > vsftpd.patch
+#diff /etc/vsftpd.conf ~/config/vsftpd.conf > vsftpd.patch
 #patch /etc/vsftpd.conf < vsftpd.patch
 #systemctl restart vsftpd
 
@@ -27,6 +27,4 @@ echo "net.ipv6.conf.all.disable_ipv6 = 1" >>  /etc/sysctl.conf
 echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 sysctl -p
 
-## Talk to nick about log files - filebeat
-## sam to run privesc checks unix-privesc checker
 ## check mitre attack framework

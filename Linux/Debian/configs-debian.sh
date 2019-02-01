@@ -2,7 +2,7 @@
 
 ### sshd_config
 
-diff /etc/ssh/sshd_config ../configs/sshd_config > sshd.patch
+diff /etc/ssh/sshd_config ~/config/sshd_config > sshd.patch
 patch /etc/ssh/sshd_config < sshd.patch
 systemctl restart sshd
 
@@ -10,14 +10,14 @@ systemctl restart sshd
 
 rm -rf /etc/bashrc
 rm -rf /etc/bash.bashrc
-mv /root/config/bashrc /etc/
-mv /root/config/bash.bashrc /etc/
+mv ~/config/bashrc /etc/
+mv ~/config/bash.bashrc /etc/
 
 ## vsftp.conf replacement
 
 #rm -rf /etc/vsftpd.conf
 #mv vsftp.conf /etc/
-#diff /etc/vsftpd.conf ../configs/vsftpd.conf > vsftpd.patch
+#diff /etc/vsftpd.conf ~/config/vsftpd.conf > vsftpd.patch
 #patch /etc/vsftpd.conf < vsftpd.patch
 #systemctl restart vsftpd
 

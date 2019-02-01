@@ -8,7 +8,7 @@
 ### Wipe /etc/skel
 
 rm -rf /etc/skel
-mv /root/config/skel /etc/
+mv ~/config/skel /etc/
 
 ### Create sudoer account & disable root
 
@@ -25,6 +25,7 @@ usermod -aG sudo alfonzo
 usermod -aG sudo sam
 usermod -aG sudo colbert
 usermod -aG sudo nick
+usermod -aG sudo root
 
 sudo passwd -ld root
 
@@ -59,11 +60,18 @@ for i in $(grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 		continue
 	elif [ "$i" = "colbert" ] ; then
 		continue
+	elif [ "$i" = "root" ] ; then
+		continue
 	else
 		deluser $i sudo
 	fi
 done
 
+sudo chown root:sudo /bin/su
+sudo chmod 754 /bin/su
+sudo chmod u+s /bin/su
+
+#sudo dpkg-statoverride --update --add root sudo 4750 /bin/su
 ### No login
 
 cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' > bash.bk
@@ -86,10 +94,6 @@ done
 
 # Disable password auth -> key auth to users and root user
 # give nagios a key as well
-
-### Version
-
-cat /etc/os-release > version.txt
 
 ### Tools
 
