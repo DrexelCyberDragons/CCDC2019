@@ -23,23 +23,26 @@ read os
 
 # Moving configs over
 #ssh -t ${user}@${host} "wget ${me}/CCDC2019/Linux/configs.tar.gz"
-wget ${me}/CCDC2019/Linux/configs.tar.gz
+#wget ${me}/CCDC2019/Linux/configs.tar.gz
 # Unzipping configs file
 #ssh -t ${user}@${host} 'tar -xzvf configs.tar.gz'
 tar -xzvf configs.tar.gz
 ### Running scripts
 
+
 if [ "$os" = "debian" ] ; then
 
   # Running Startup script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/Debian/start-debian.sh | /bin/bash"
-  curl ${me}/CCDC2019/Linux/Debian/start-debian.sh | /bin/bash
+  #curl ${me}/CCDC2019/Linux/Debian/start-debian.sh | /bin/bash
+  bash start-debian.sh
   # Running Reporting script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/Debian/reporting-debian.sh | /bin/bash"
-  curl ${me}/CCDC2019/Linux/Debian/reporting-debian.sh | /bin/bash
+  #curl ${me}/CCDC2019/Linux/Debian/reporting-debian.sh | /bin/bash
+  bash reporting-debian.sh
   # Moving other scripts over to the machine
 
-  wget ${me}/CCDC2019/Linux/Debian/scripts.tar.gz
+  #wget ${me}/CCDC2019/Linux/Debian/scripts.tar.gz
   tar -xzvf scripts.tar.gz
 
   #ssh -t ${user}@${host} "wget ${me}/CCDC2019/Linux/Debian/iptables-debian.sh"
@@ -51,13 +54,15 @@ elif [ "$os" = "rhel" ] ; then
 
   # Running Startup script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/RHEL/start-fedora.sh | /bin/bash"
-  curl ${me}/CCDC2019/Linux/RHEL/start-fedora.sh | /bin/bash
+  #curl ${me}/CCDC2019/Linux/RHEL/start-fedora.sh | /bin/bash
+  bash start-fedora.sh
   # Running Reporting script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/RHEL/reporting-fedora.sh | /bin/bash"
-  curl ${me}/CCDC2019/Linux/RHEL/reporting-fedora.sh | /bin/bash
+  #curl ${me}/CCDC2019/Linux/RHEL/reporting-fedora.sh | /bin/bash
+  bash reporting-fedora.sh
   # Moving other scripts over to the machine
 
-  wget ${me}/CCDC2019/Linux/RHEL/scripts.tar.gz
+  #wget ${me}/CCDC2019/Linux/RHEL/scripts.tar.gz
   tar -xzvf scripts.tar.gz
 
   #ssh -t ${user}@${host} "wget ${me}/CCDC2019/Linux/RHEL/iptables-fedora.sh"
@@ -72,13 +77,13 @@ fi
 ### Cleaning up
 
 ## Copying files back
-mkdir /Users/Alfonzo/Desktop/CCDC/CCDC2019/Linux/hostinfo/${host}
-scp ${user}@${host}:bash.bk /Users/Alfonzo/Desktop/CCDC/CCDC2019/Linux/hostinfo/${host}
-scp ${user}@${host}:sudo.bk /Users/Alfonzo/Desktop/CCDC/CCDC2019/Linux/hostinfo/${host}
+#mkdir /Users/Alfonzo/Desktop/CCDC/CCDC2019/Linux/hostinfo/${host}
+#scp ${user}@${host}:bash.bk /Users/Alfonzo/Desktop/CCDC/CCDC2019/Linux/hostinfo/${host}
+#scp ${user}@${host}:sudo.bk /Users/Alfonzo/Desktop/CCDC/CCDC2019/Linux/hostinfo/${host}
 
 ## Removing files
-rm bash.bk
-rm sudo.bk
+#rm bash.bk
+#rm sudo.bk
 #ssh -t ${user}@${host} 'rm bash.bk'
 #ssh -t ${user}@${host} 'rm version.txt'
 #ssh -t ${user}@${host} 'rm sudo.bk'
