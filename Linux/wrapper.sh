@@ -35,11 +35,11 @@ if [ "$os" = "debian" ] ; then
   # Running Startup script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/Debian/start-debian.sh | /bin/bash"
   #curl ${me}/CCDC2019/Linux/Debian/start-debian.sh | /bin/bash
-  bash start-debian.sh
+  bash /Debian/start-debian.sh
   # Running Reporting script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/Debian/reporting-debian.sh | /bin/bash"
   #curl ${me}/CCDC2019/Linux/Debian/reporting-debian.sh | /bin/bash
-  bash reporting-debian.sh
+  bash /Debian/reporting-debian.sh
   # Moving other scripts over to the machine
 
   #wget ${me}/CCDC2019/Linux/Debian/scripts.tar.gz
@@ -55,11 +55,11 @@ elif [ "$os" = "rhel" ] ; then
   # Running Startup script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/RHEL/start-fedora.sh | /bin/bash"
   #curl ${me}/CCDC2019/Linux/RHEL/start-fedora.sh | /bin/bash
-  bash start-fedora.sh
+  bash /RHEL/start-fedora.sh
   # Running Reporting script
   #ssh -t ${user}@${host} "curl ${me}/CCDC2019/Linux/RHEL/reporting-fedora.sh | /bin/bash"
   #curl ${me}/CCDC2019/Linux/RHEL/reporting-fedora.sh | /bin/bash
-  bash reporting-fedora.sh
+  bash /RHEL/reporting-fedora.sh
   # Moving other scripts over to the machine
 
   #wget ${me}/CCDC2019/Linux/RHEL/scripts.tar.gz
