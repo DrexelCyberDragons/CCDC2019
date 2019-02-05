@@ -35,10 +35,10 @@ sudo systemctl enable fail2ban
 
 ### Sending Logs
 
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.5.4-amd64.deb
-sudo dpkg -i filebeat-6.5.4-amd64.deb
+curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-6.6.0-amd64.deb
+sudo dpkg -i auditbeat-6.6.0-amd64.deb
 
-cp ~/config/filebeat.yml /etc/filebeat/
+cp ~/config/auditbeat.yml /etc/auditbeat/
 
-filebeat setup --dashboards
-service filebeat start
+auditbeat setup --dashboards
+service auditbeat start
