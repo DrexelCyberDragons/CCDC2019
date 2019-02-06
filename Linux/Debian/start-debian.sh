@@ -8,7 +8,7 @@
 ### Wipe /etc/skel
 
 rm -rf /etc/skel
-mv ~/config/skel /etc/
+mv ../config/skel /etc/
 
 ### Create sudoer account & disable root
 
@@ -42,6 +42,8 @@ for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
 		continue
 	elif [ "$i" = "colbert" ] ; then
 		continue
+	elif [ "$i" = "scorebot" ] ; then
+		continue
 	else
 		echo -e "cyberdragons\ncyberdragons" | passwd $i
 	fi
@@ -61,6 +63,8 @@ for i in $(grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 	elif [ "$i" = "colbert" ] ; then
 		continue
 	elif [ "$i" = "root" ] ; then
+		continue
+	elif [ "$i" = "scorebot" ] ; then
 		continue
 	else
 		deluser $i sudo
@@ -87,6 +91,8 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
     continue
   elif [ "$i" = "root" ] ; then
     continue
+	elif [ "$i" = "scorebot" ] ; then
+		continue
   else
     usermod -s /usr/sbin/nologin $i
   fi
@@ -98,5 +104,5 @@ done
 ### Tools
 
 #sudo apt-get upgrade -y
-sudo apt-get update -y
-sudo apt-get install vim -y
+#sudo apt-get update -y
+#sudo apt-get install vim -y

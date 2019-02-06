@@ -3,7 +3,7 @@
 ### Wipe /etc/skel
 
 rm -rf /etc/skel
-mv ~/config/skel /etc/
+mv ../config/skel /etc/
 
 ### Create our user accounts
 
@@ -90,5 +90,5 @@ done
 ## Tools
 
 #sudo yum upgrade -y
-sudo yum update -y
-sudo yum install vim -y
+#sudo yum update -y
+#sudo yum install vim -y

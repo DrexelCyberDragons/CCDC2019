@@ -38,7 +38,7 @@ sudo systemctl enable fail2ban
 curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-6.6.0-amd64.deb
 sudo dpkg -i auditbeat-6.6.0-amd64.deb
 
-cp ~/config/auditbeat.yml /etc/auditbeat/
+cp ../config/auditbeat.yml /etc/auditbeat/
 
 auditbeat setup --dashboards
 service auditbeat start
