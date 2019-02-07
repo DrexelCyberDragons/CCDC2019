@@ -2,6 +2,8 @@
 # /usr/share/skel
 # weird rc files
 
+# packages in /var/cache/pkg
+
 # Add our users
 
 pw user add alfonzo -G wheel -s /bin/sh

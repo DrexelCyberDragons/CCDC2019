@@ -1,6 +1,10 @@
 ### Debian ntp
+tar -xzvf /packages/ubuntu16.04/archives.tar.gz
+for i in $(ls /packages/ubuntu16.04/archives); do
+    sudo dpkg -i $i
+done
 
-sudo apt-get install ntp ntpdate -y
+#sudo apt-get install ntp ntpdate -y
 sudo systemctl start ntp
 sudo systemctl enable ntp
 sudo ntpdate -q 0.rhel.pool.ntp.org
@@ -9,7 +13,7 @@ sudo systemctl restart ntp
 
 ### Debian auditd
 
-sudo apt-get install auditd -y
+#sudo apt-get install auditd -y
 sudo rm -rf /etc/audit/rules.d/audit.rules
 sudo mv /root/config/audit.rules /etc/audit/rules.d/
 sudo systemctl start auditd
@@ -17,7 +21,7 @@ sudo systemctl enable auditd
 
 ### Fail2Ban
 
-sudo apt-get install fail2ban -y
+#sudo apt-get install fail2ban -y
 sudo systemctl start fail2ban
 sudo systemctl enable fail2ban
 

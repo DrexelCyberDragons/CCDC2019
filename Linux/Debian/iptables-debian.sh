@@ -16,16 +16,18 @@ iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 ## Incoming
 
 iptables -A INPUT -p tcp --dport ssh -j ACCEPT
-iptables -A INPUT -p tcp --dport http -j ACCEPT
-iptables -A INPUT -p tcp --dport https -j ACCEPT
-iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
+iptables -A INPUT -p tcp --dport 2249 -j ACCEPT
+#iptables -A INPUT -p tcp --dport http -j ACCEPT
+#iptables -A INPUT -p tcp --dport https -j ACCEPT
+#iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
 
 ## Outgoing
 
 iptables -A OUTPUT -p tcp --dport ssh -j ACCEPT
-iptables -A OUTPUT -p tcp --dport http -j ACCEPT
-iptables -A OUTPUT -p tcp --dport https -j ACCEPT
-iptables -A OUTPUT -p tcp --dport http-alt -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 2249 -j ACCEPT
+#iptables -A OUTPUT -p tcp --dport http -j ACCEPT
+#iptables -A OUTPUT -p tcp --dport https -j ACCEPT
+#iptables -A OUTPUT -p tcp --dport http-alt -j ACCEPT
 
 ### Drop all packets that do not have rules
 
@@ -47,6 +49,6 @@ iptables -I OUTPUT 5 -m limit --limit 5/min -j LOG --log-prefix "iptables denied
 iptables-save > new-iptables.bk
 iptables-save > /etc/iptables/rules.v4
 
-sudo apt-get install iptstate -y
+#sudo apt-get install iptstate -y
 sudo apt-get install iptables-persistent -y
 sudo service netfilter-persistent start

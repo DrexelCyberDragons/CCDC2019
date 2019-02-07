@@ -8,24 +8,24 @@ mv ../config/skel /etc/
 ### Create our user accounts
 
 useradd alfonzo
-echo "dustyspicy50" | passwd alfonzo --stdin
+echo -e "dustyspicy50\ndustyspicy50" | passwd alfonzo
 usermod -aG wheel alfonzo
 
 useradd sam
-echo "seemlytend26" | passwd sam --stdin
+echo -e "seemlytend26\nseemlytend26" | passwd sam
 usermod -aG wheel sam
 
 useradd colbert
-echo "openframe32" | passwd colbert --stdin
+echo -e "openframe32\nopenframe32" | passwd colbert
 usermod -aG wheel colbert
 
 useradd nick
-echo "grassseize57" | passwd nick --stdin
+echo -e "grassseize57\ngrassseize57" | passwd nick
 usermod -aG wheel nick
 
 usermod -aG wheel root
-sudo passwd -l root
-sudo passwd -d root
+passwd -l root
+passwd -d root
 
 ### Password Changes
 
@@ -63,9 +63,9 @@ for i in $(grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 	fi
 done
 
-sudo chown root:wheel /bin/su
-sudo chmod 754 /bin/su
-sudo chmod u+s /bin/su
+chown root:wheel /bin/su
+chmod 754 /bin/su
+chmod u+s /bin/su
 
 ### No login
 
