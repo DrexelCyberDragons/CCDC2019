@@ -37,7 +37,7 @@
 	</ImageLoad>
 	
 	<ImageLoad onmatch="include">
-		<ImageLoaded condition="contains">system.management</ImageLoaded>
+		<ImageLoaded condition="contains">system.management.automation</ImageLoaded>
 	</ImageLoad>
 	
 	<!--SYSMON EVENT ID 8 : REMOTE THREAD CREATED [CreateRemoteThread]-->

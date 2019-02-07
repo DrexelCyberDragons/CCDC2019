@@ -23,6 +23,8 @@ winlogbeat.event_logs:
   - name: Security
   - name: System
   - name: Microsoft-Windows-Sysmon/Operational
+  - name: Windows PowerShell
+  - name: Microsoft-Windows-PowerShell/Operational
 
 #==================== Elasticsearch template setting ==========================
 
@@ -39,7 +41,7 @@ setup.template.settings:
 
 # The tags of the shipper are included in their own field with each
 # transaction published.
-# tags: ["DC"]
+tags: ["CHEESE"]
 
 # Optional fields that you can specify to add additional information to the
 # output.
