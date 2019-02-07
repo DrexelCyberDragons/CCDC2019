@@ -31,7 +31,7 @@ do {
         $WinLogArray = @("System", "Security", "Application")
         $WinEventParameters = @{'Oldest' = $True}
         $WinEventParameters['ComputerName'] = $Computer
-        $WinEventParameters['Credential'] = $Cred
+        $WinEventParameters['Credential'] = $Credential
 
         foreach($log in $WinLogArray) {
             Write-Host -----$log-----

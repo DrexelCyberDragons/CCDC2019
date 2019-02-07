@@ -38,7 +38,7 @@ do {
         $LogFilename = $Computer + "_Sysmon_PS.xml"
         $WinEventParameters = @{'Oldest' = $True}
         $WinEventParameters['ComputerName'] = $Computer
-        $WinEventParameters['Credential'] = $Cred
+        $WinEventParameters['Credential'] = $Credential
 
         # FilterHashtable Arguments
         $WinEventFilters = @{ 'LogName' = 'Microsoft-Windows-Sysmon/Operational' }
