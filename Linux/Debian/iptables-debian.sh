@@ -16,7 +16,8 @@ iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 ## Incoming
 
 iptables -A INPUT -p tcp --dport ssh -j ACCEPT
-iptables -A INPUT -p tcp --dport 2249 -j ACCEPT
+iptables -A INPUT -p tcp --dport 2049 -j ACCEPT
+iptables -A INPUT -p tcp --dport 111 -j ACCEPT
 #iptables -A INPUT -p tcp --dport http -j ACCEPT
 #iptables -A INPUT -p tcp --dport https -j ACCEPT
 #iptables -A INPUT -p tcp --dport http-alt -j ACCEPT
@@ -24,7 +25,8 @@ iptables -A INPUT -p tcp --dport 2249 -j ACCEPT
 ## Outgoing
 
 iptables -A OUTPUT -p tcp --dport ssh -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 2249 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 2049 -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 111 -j ACCEPT
 #iptables -A OUTPUT -p tcp --dport http -j ACCEPT
 #iptables -A OUTPUT -p tcp --dport https -j ACCEPT
 #iptables -A OUTPUT -p tcp --dport http-alt -j ACCEPT
