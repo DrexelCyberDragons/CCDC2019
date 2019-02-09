@@ -1,6 +1,9 @@
 sudo systemctl stop sshd
-rm -rf /etc/skel
-mv ../config/skel /etc/
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >>  /etc/sysctl.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+sysctl -p
+#rm -rf /etc/skel
+#mv ../config/skel /etc/
 useradd alfonzo -s /bin/bash
 echo -e "dustyspicy50\ndustyspicy50" | passwd alfonzo
 useradd sam -s /bin/bash
@@ -76,6 +79,4 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
   fi
 done
 
-echo "net.ipv6.conf.all.disable_ipv6 = 1" >>  /etc/sysctl.conf
-echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
-sysctl -p
+sudo systemctl start sshd

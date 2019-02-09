@@ -1,12 +1,6 @@
-### Starter script
-
-### Wipe /etc/skel
-
-rm -rf /etc/skel
-mv ../config/skel /etc/
-
-### Create our user accounts
-
+sudo systemctl stop sshd
+#rm -rf /etc/skel
+#mv ../config/skel /etc/
 useradd alfonzo
 echo -e "dustyspicy50\ndustyspicy50" | passwd alfonzo
 usermod -aG wheel alfonzo
@@ -87,8 +81,4 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
   fi
 done
 
-## Tools
-
-#sudo yum upgrade -y
-#sudo yum update -y
-#sudo yum install vim -y
+sudo systemctl start sshd
