@@ -4,7 +4,7 @@
 
 iptables-save > old-iptables.bk
 #iptables-restore < iptables.bk
-iptables -F
+#iptables -F
 
 ### Accept traffic for established sessions ?\
 #Firewallcmd or iptables-persistent

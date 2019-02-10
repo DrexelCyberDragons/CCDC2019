@@ -1,7 +1,7 @@
 
-# /usr/share/skel
-# weird rc files
-
+echo 'ip6addrctl_enable="NO"' >> /etc/rc.conf
+echo 'ip6addrctl_policy="ipv4_prefer"'­ >> /etc/rc.conf
+echo 'ipv6_activate_all_interfaces="NO"' >> /etc/rc.conf
 # packages in /var/cache/pkg
 
 # Add our users
