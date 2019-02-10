@@ -1,4 +1,4 @@
-sudo systemctl stop sshd
+systemctl stop sshd
 #rm -rf /etc/skel
 #mv ../config/skel /etc/
 useradd alfonzo
@@ -18,12 +18,13 @@ echo -e "grassseize57\ngrassseize57" | passwd nick
 usermod -aG wheel nick
 
 usermod -aG wheel root
-passwd -l root
-passwd -d root
+#passwd -l root
+#passwd -d root
+echo -e "gentlerebel24\ngentlerebel24" | passwd root
 
 ### Password Changes
 
-for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
+for i in $( cat /etc/passwd | cut -d: -f1 ); do
 	if [ "$i" = "alfonzo" ] ; then
 		continue
 	elif [ "$i" = "sam" ] ; then
@@ -31,6 +32,10 @@ for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
 	elif [ "$i" = "nick" ] ; then
 		continue
 	elif [ "$i" = "colbert" ] ; then
+		continue
+	elif [ "$i" = "root" ] ; then
+		continue
+	elif [ "$i" = "scorebot" ] ; then
 		continue
 	else
 		echo -e "cyberdragons\ncyberdragons" | passwd $i
@@ -63,9 +68,9 @@ chmod u+s /bin/su
 
 ### No login
 
-cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' > bash.bk
+cat /etc/passwd | cut -d: -f7 > bash.bk
 
-for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); do
+for i in $( cat /etc/passwd | cut -d: -f7 ); do
   if [ "$i" = "alfonzo" ] ; then
     continue
   elif [ "$i" = "sam" ] ; then
@@ -81,4 +86,4 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); 
   fi
 done
 
-sudo systemctl start sshd
+systemctl start sshd
