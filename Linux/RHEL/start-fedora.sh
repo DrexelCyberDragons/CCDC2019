@@ -24,7 +24,7 @@ echo -e "gentlerebel24\ngentlerebel24" | passwd root
 
 ### Password Changes
 
-for i in $( passwd -aS | grep ' P \| NP ' | awk '{print $1}' | sort | uniq ); do
+for i in $( passwd -aS | grep ' P \| NP ' | cut -d' ' -f1 | sort | uniq ); do
 	if [ "$i" = "alfonzo" ] ; then
 		continue
 	elif [ "$i" = "sam" ] ; then
@@ -72,7 +72,7 @@ rm -f /usr/sbin/nologin
 echo 'IyEvYmluL3NoCmVjaG8gIlRoaXMgYWNjb3VudCBpcyBjdXJyZW50bHkgbm90IGF2YWlsYWJsZS4iCmV4aXQgMTsK' | base64 -d > /usr/sbin/nologin
 chmod 755 /usr/sbin/nologin
 
-for i in $( cat /etc/passwd | cut -d: -f7 ); do
+for i in $( cat /etc/passwd | cut -d: -f1 ); do
   if [ "$i" = "alfonzo" ] ; then
     continue
   elif [ "$i" = "sam" ] ; then
