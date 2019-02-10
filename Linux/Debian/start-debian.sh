@@ -61,7 +61,9 @@ sudo chown root:sudo /bin/su
 sudo chmod 754 /bin/su
 sudo chmod u+s /bin/su
 
-cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' > bash.bk
+rm -f /usr/sbin/nologin
+echo 'IyEvYmluL3NoCmVjaG8gIlRoaXMgYWNjb3VudCBpcyBjdXJyZW50bHkgbm90IGF2YWlsYWJsZS4iCmV4aXQgMTsK' | base64 -d > /usr/sbin/nologin
+chmod 755 /usr/sbin/nologin
 
 for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); do
   if [ "$i" = "alfonzo" ] ; then

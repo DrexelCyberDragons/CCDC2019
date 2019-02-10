@@ -1,6 +1,11 @@
 systemctl stop sshd
 #rm -rf /etc/skel
 #mv ../config/skel /etc/
+touch /etc/sysctl.d/10-disable_ipv6.conf
+echo "net.ipv6.conf.all.disable_ipv6 = 1" >>  /etc/sysctl.d/10-disable_ipv6.conf
+echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.d/10-disable_ipv6.conf
+systemctl restart systemd-sysctl.service
+
 useradd alfonzo
 echo -e "dustyspicy50\ndustyspicy50" | passwd alfonzo
 usermod -aG wheel alfonzo
@@ -18,9 +23,9 @@ echo -e "grassseize57\ngrassseize57" | passwd nick
 usermod -aG wheel nick
 
 usermod -aG wheel root
-#passwd -l root
-#passwd -d root
-echo -e "gentlerebel24\ngentlerebel24" | passwd root
+passwd -l root
+passwd -d root
+
 
 ### Password Changes
 
@@ -44,8 +49,6 @@ done
 
 ### Wheel Changes
 
-grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g" > wheel.bk
-
 for i in $(grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 	if [ "$i" = "alfonzo" ] ; then
 		continue
@@ -59,12 +62,9 @@ for i in $(grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 		continue
 	else
 		gpasswd -d $i wheel
+		gpasswd -d $i sudo
 	fi
 done
-
-chown root:wheel /bin/su
-chmod 754 /bin/su
-chmod u+s /bin/su
 
 ### No login
 
