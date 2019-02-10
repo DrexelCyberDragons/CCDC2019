@@ -25,7 +25,7 @@ rm /etc/sudoers.d/svc-system-config-user
 passwd -l root
 passwd -d root
 
-for i in $( passwd -as | grep PS | awk '{print $1}'); do
+for i in $( ((passwd -as | grep 'PS') & (passwd -as | grep 'NP')) | awk '{print $1}'); do
   if [ "$i" = "alfonzo" ] ; then
     continue
   elif [ "$i" = "sam" ] ; then
@@ -33,6 +33,8 @@ for i in $( passwd -as | grep PS | awk '{print $1}'); do
   elif [ "$i" = "nick" ] ; then
     continue
   elif [ "$i" = "colbert" ] ; then
+    continue
+  elif [ "$i" = "root" ] ; then
     continue
   elif [ "$i" = "scorebot" ] ; then
     continue
