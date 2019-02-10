@@ -37,9 +37,7 @@ for i in $( passwd -aS | grep ' P \| NP ' | awk '{print $1}' ); do
 	fi
 done
 
-grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g" > sudo.bk
-
-for i in $(grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
+for i in $(cat /etc/passwd | awk -F: '{print $1}'); do
 	if [ "$i" = "alfonzo" ] ; then
 		continue
 	elif [ "$i" = "sam" ] ; then
@@ -54,6 +52,7 @@ for i in $(grep '^sudo:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 		continue
 	else
 		deluser $i sudo
+		deluser $i admin
 	fi
 done
 
