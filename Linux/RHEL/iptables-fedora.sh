@@ -1,5 +1,7 @@
 iptables-save > old-iptables.bk
 
+iptables -F INPUT
+
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
