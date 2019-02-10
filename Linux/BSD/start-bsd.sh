@@ -1,4 +1,4 @@
-
+sudo service stop sshd
 echo 'ip6addrctl_enable="NO"' >> /etc/rc.conf
 echo 'ip6addrctl_policy="ipv4_prefer"'­ >> /etc/rc.conf
 echo 'ipv6_activate_all_interfaces="NO"' >> /etc/rc.conf
@@ -17,24 +17,6 @@ passwd alfonzo
 passwd sam
 passwd nick
 passwd colbert
-
-# Locking unused users
-
-for i in $( cat /etc/passwd | awk -F: '$3 > 999 {print $1}' ); do
-	if [ "$i" = "alfonzo" ] ; then
-		continue
-	elif [ "$i" = "sam" ] ; then
-		continue
-	elif [ "$i" = "nick" ] ; then
-		continue
-	elif [ "$i" = "colbert" ] ; then
-		continue
-	elif [ "$i" = "scorebot" ] ; then
-		continue
-	else
-		pw lock $i
-	fi
-done
 
 # Wheel sudo rights
 
@@ -81,3 +63,4 @@ for i in $( cat /etc/passwd | awk -F: '$7 != "/sbin/nologin" {print $1}' ); do
     pw user mod $i -s /sbin/nologin
   fi
 done
+sudo service stop sshd
