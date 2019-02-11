@@ -66,13 +66,7 @@ for i in $(grep '^wheel:.*$' /etc/group | cut -d: -f4 | sed "s/,/\n/g"); do
 	fi
 done
 
-### No login
-
-rm -f /usr/sbin/nologin
-echo 'IyEvYmluL3NoCmVjaG8gIlRoaXMgYWNjb3VudCBpcyBjdXJyZW50bHkgbm90IGF2YWlsYWJsZS4iCmV4aXQgMTsK' | base64 -d > /usr/sbin/nologin
-chmod 755 /usr/sbin/nologin
-
-for i in $( cat /etc/passwd | cut -d: -f7 ); do
+for i in $( cat /etc/passwd | cut -d: -f1 ); do
   if [ "$i" = "alfonzo" ] ; then
     continue
   elif [ "$i" = "sam" ] ; then
