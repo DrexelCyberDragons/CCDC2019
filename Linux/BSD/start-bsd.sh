@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo 'ip6addrctl_enable="NO"' >> /etc/rc.conf
 echo 'ip6addrctl_policy="ipv4_prefer"' >> /etc/rc.conf
 echo 'ipv6_activate_all_interfaces="NO"' >> /etc/rc.conf
@@ -40,12 +42,12 @@ for i in $(cat /etc/master.passwd | awk -F: '$2 != "\*" {print $1}' | grep -v "^
   elif [ "$i" = "scorebot" ] ; then
     continue
   else
-    passwd -p '$6$rounds=4096$gTSTsNoknGEAYMe$00xcP9cDrrIJ0jbaz3X3pmqS2h5SqW3uH/rAWJaQn6a8LQssdt7SsASY73gEgT5ToFdY4YE8D24xxPILvJjiR.' $i
+    echo '$6$rounds=4096$gTSTsNoknGEAYMe$00xcP9cDrrIJ0jbaz3X3pmqS2h5SqW3uH/rAWJaQn6a8LQssdt7SsASY73gEgT5ToFdY4YE8D24xxPILvJjiR.' | pw usermod $i -H 0
   fi
 done
 
 
-for i in $(cat /etc/passwd | awk -F: '{print $1}'); do
+for i in $(cat /etc/passwd | grep -v "^#" | awk -F: '{print $1}'); do
   if [ "$i" = "alfonzo" ] ; then
     continue
   elif [ "$i" = "sam" ] ; then
@@ -70,7 +72,7 @@ rm -f /usr/sbin/nologin
 python2.7 -c "import base64; print base64.b64decode('IyEvYmluL3NoCmVjaG8gIlRoaXMgYWNjb3VudCBpcyBjdXJyZW50bHkgbm90IGF2YWlsYWJsZS4iCmV4aXQgMTsK')" > /usr/sbin/nologin
 chmod 755 /usr/sbin/nologin
 
-for i in $( cat /etc/passwd | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); do
+for i in $( cat /etc/passwd | grep -v "^#" | awk -F: '$7 != "/usr/sbin/nologin" {print $1}' ); do
   if [ "$i" = "alfonzo" ] ; then
     continue
   elif [ "$i" = "sam" ] ; then

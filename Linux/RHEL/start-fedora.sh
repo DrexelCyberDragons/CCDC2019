@@ -1,19 +1,19 @@
 systemctl stop sshd
 #rm -rf /etc/skel
 #mv ../config/skel /etc/
-useradd alfonzo
+useradd alfonzo -m
 echo -e "dustyspicy50\ndustyspicy50" | passwd alfonzo
 usermod -aG wheel alfonzo
 
-useradd sam
+useradd sam -m
 echo -e "seemlytend26\nseemlytend26" | passwd sam
 usermod -aG wheel sam
 
-useradd colbert
+useradd colbert -m
 echo -e "openframe32\nopenframe32" | passwd colbert
 usermod -aG wheel colbert
 
-useradd nick
+useradd nick -m
 echo -e "grassseize57\ngrassseize57" | passwd nick
 usermod -aG wheel nick
 
