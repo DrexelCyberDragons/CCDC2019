@@ -4,12 +4,9 @@ echo "net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 sysctl -p
 #rm -rf /etc/skel
 #mv ../config/skel /etc/
-useradd alfonzo -m -s /bin/bash
-echo -e "cornermatter52\ncornermatter52" | passwd alfonzo
-useradd sam -m -s /bin/bash
-echo -e "annualresist00\nannualresist00" | passwd sam
-useradd matt -m -s /bin/bash
-echo -e "showersocial94\nshowersocial94" | passwd matt
+useradd alfonzo -m -s /bin/bash -p '$6$rounds=4096$P65PHjtBjJ6el$r/GIe1OktX/1MpvEXFBazHH0vrN0TpN9xndOkKKd5vRRq4bXNSIT/3BwqLU/16WuE8raX1hq2VlbF8UulLiz31'
+useradd sam -m -s /bin/bash -p '$6$rounds=4096$0ut.Q36mgUsrL$dymsL91iTnadEetup04SFXfnLWiOPuhAhxvqueZvLQ2.cCVRy/4kTusY6Cs23u0S.DBljKU1dQITZmtRN31HL1'
+useradd matt -m -s /bin/bash -p '$6$rounds=4096$sLTudDG7wg1h$jxDHi1eJXk.z2cAeSRnNtJWvIGWfoJCPr3x0ReQhmCcf1i1eMZPw22g1cc1ybjjYXZmVD5IvwAvflA1TIlR8a0'
 
 usermod -aG sudo alfonzo
 usermod -aG sudo sam
@@ -29,7 +26,7 @@ for i in $( passwd -aS | grep ' P \| NP ' | awk '{print $1}' ); do
 	elif [ "$i" = "root" ] ; then
 		continue
 	else
-		echo -e "cyberdragons\ncyberdragons" | passwd $i
+		usermod $i -p '$6$rounds=4096$arm0aqVICE$qZGlom8InzFtu5jOQMhQN/JTkcVxMNigNeZse5yPmxxoQRIH6hpHC.GpoEBbUB15FUi8xACK7jLM7UqKGutuJ/'
 	fi
 done
 
