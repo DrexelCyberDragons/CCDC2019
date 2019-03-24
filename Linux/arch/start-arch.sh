@@ -4,7 +4,7 @@ useradd alfonzo -m -s /bin/bash -p '$6$rounds=4096$P65PHjtBjJ6el$r/GIe1OktX/1Mpv
 useradd sam -m -s /bin/bash -p '$6$rounds=4096$0ut.Q36mgUsrL$dymsL91iTnadEetup04SFXfnLWiOPuhAhxvqueZvLQ2.cCVRy/4kTusY6Cs23u0S.DBljKU1dQITZmtRN31HL1'
 useradd matt -m -s /bin/bash -p '$6$rounds=4096$sLTudDG7wg1h$jxDHi1eJXk.z2cAeSRnNtJWvIGWfoJCPr3x0ReQhmCcf1i1eMZPw22g1cc1ybjjYXZmVD5IvwAvflA1TIlR8a0'
 
-pacman -S sudo
+pacman -S --noconfirm sudo
 #groupadd sudo
 chattr -i /etc/sudoers
 sed -i "s/# %wheel ALL=(ALL) ALL/ %wheel ALL=(ALL) ALL/" /etc/sudoers
