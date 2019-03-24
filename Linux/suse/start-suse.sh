@@ -9,8 +9,12 @@ usermod -aG wheel sam
 usermod -aG wheel matt
 
 usermod -aG wheel root
-passwd -l root
-passwd -d root
+#passwd -l root
+#passwd -d root
+
+chattr -i /etc/sudoers
+sed -i "s/# %wheel ALL=(ALL) ALL/ %wheel ALL=(ALL) ALL/" /etc/sudoers
+chattr +i /etc/sudoers
 
 for i in $( passwd -aS | grep ' P \| NP ' | cut -d' ' -f1 | sort | uniq ); do
 	if [ "$i" = "alfonzo" ] ; then
