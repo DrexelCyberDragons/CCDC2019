@@ -4,9 +4,20 @@ useradd alfonzo -m -s /bin/bash -p '$6$rounds=4096$P65PHjtBjJ6el$r/GIe1OktX/1Mpv
 useradd sam -m -s /bin/bash -p '$6$rounds=4096$0ut.Q36mgUsrL$dymsL91iTnadEetup04SFXfnLWiOPuhAhxvqueZvLQ2.cCVRy/4kTusY6Cs23u0S.DBljKU1dQITZmtRN31HL1'
 useradd matt -m -s /bin/bash -p '$6$rounds=4096$sLTudDG7wg1h$jxDHi1eJXk.z2cAeSRnNtJWvIGWfoJCPr3x0ReQhmCcf1i1eMZPw22g1cc1ybjjYXZmVD5IvwAvflA1TIlR8a0'
 
-#pacman -S sudo
+pacman -S sudo
 #groupadd sudo
-#sudo sed -i "s/# %sudo ALL=(ALL) ALL/%sudo ALL=(ALL) ALL/" /etc/sudoers
+chattr -i /etc/sudoers
+sed -i "s/# %wheel ALL=(ALL) ALL/ %wheel ALL=(ALL) ALL/" /etc/sudoers
+sed -i "s/Defaults targetpw/#Defaults targetpw/" /etc/sudoers
+sed -i "s/ALL   ALL=(ALL) ALL   # WARNING/#ALL   ALL=(ALL) ALL   # WARNING/" /etc/sudoers
+chattr +i /etc/sudoers
+
+usermod -aG wheel alfonzo
+usermod -aG wheel sam
+usermod -aG wheel matt
+usermod -aG wheel root
+passwd -l root
+passwd -d root
 
 for i in $( passwd -aS | grep ' P \| NP ' | awk '{print $1}' ); do
 	if [ "$i" = "alfonzo" ] ; then
