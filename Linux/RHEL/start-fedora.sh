@@ -12,8 +12,6 @@ usermod -aG wheel matt
 
 usermod -aG wheel root
 passwd -l root
-passwd -d root
-#echo -e "gentlerebel24\ngentlerebel24" | passwd root
 
 ### Password Changes
 
