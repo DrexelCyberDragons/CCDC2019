@@ -1,2 +1,5 @@
-# CCDC2019
-CCDC 2019 yeahhhhhhhh booooooiiiiiiii
+# Blue Team Scripts
+
+General Blue Team WIndows Scripts
+
+Purpose of script:
