@@ -9,7 +9,7 @@ This is not meant to scale!!!! Please only use in a small environment.
 2. Deploy a security policy and audit policy that is relatively strict and allows for extensive logging.
 3. Pull various installers from the web (winlogbeat, malwarebytes, and a number of the sysinternals tools)
 4. Push a smaller, domaim member script along with installers to each domain machine found.  If this doesn't happen, the code to pull the folder from a domain member will be as such 
-'''
+```
 $path = "C:\Windows\System32\dm\dm_script.ps1"
 if([System.IO.File]::Exists($path)){
 	cd C:\Windows\System32\dm
@@ -17,7 +17,7 @@ if([System.IO.File]::Exists($path)){
 }else{
 	xcopy \\host_with_ad_script\c$\Windows\System32\run\dm dm /e /i /y /s
 }
-'''
+```
 5. Test remote WMI ports, and if available, run setup on remote host from a user perspective.
 6. Enable WinRM/ps-remoting
 7. Disable NetBIOS on a host
