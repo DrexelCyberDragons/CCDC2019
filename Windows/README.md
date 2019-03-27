@@ -1,10 +1,11 @@
 # Blue Team Windows Scripts
 
-This repo is meant to be a master collection of scripts that can be used to easily secure a domain.  
+This repo is meant to be a master collection of scripts that can be used to easily secure a minimally install/configured domain.  
 
-At its core, it consists of a script to be run against a domain controller.
-This script(ad_script.ps1) will:
-1. build out a new user structure (hostname + u for standard, and hostname + uadm for admin users).  The premise behind this is that each computer on the domain besides the domain controller will have a standard user that is used to login with and perform non-administrative actions.  Each time you want to elevate, the admin user for that machine.  This is in an attempt to cut down lateral movement.  The caveat and downside with this is if the environment scales to more than 20 machines, password management becomes very hard.  
+At its core, it consists of a script to be run against a domain controller, a script to run against a domain member, and a number of domain policy that will be imported.
+
+An outline of the DC script:
+1. Build out a new user structure (hostname + u for standard, and hostname + uadm for admin users).  The premise behind this is that each computer on the domain besides the domain controller will have a standard user that is used to login with and perform non-administrative actions.  Each time you want to elevate, the admin user for that machine.  This is in an attempt to cut down lateral movement.  The caveat and downside with this is if the environment scales to more than 20 machines, password management becomes very hard.  
 This is not meant to scale!!!! Please only use in a small environment.
 2. Deploy a security policy and audit policy that is relatively strict and allows for extensive logging.
 3. Pull various installers from the web (winlogbeat, malwarebytes, and a number of the sysinternals tools)
