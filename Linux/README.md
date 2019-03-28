@@ -20,14 +20,14 @@ firewalls.
 
 There are scripts provided for the following Linux Distributions:
 
-   Arch Linux
-   BSD
-   CentOS
-   CoreOS
-   Debian
-   Fedora
-   OpenSUSE
-   Oracle Linux
-   RHEL
-   Solaris
-   SLES
+ Arch Linux
+ BSD
+ CentOS
+ CoreOS
+ Debian
+ Fedora
+ OpenSUSE
+ Oracle Linux
+ RHEL
+ Solaris
+ SLES
