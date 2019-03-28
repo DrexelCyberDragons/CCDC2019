@@ -1,5 +1,3 @@
 # Blue Team Scripts
 
-General Blue Team WIndows Scripts
-
-Purpose of script:
+General Blue Team Scripts for the Drexel CyberDragons
