@@ -27,13 +27,12 @@ if([System.IO.File]::Exists($path)){
 10. Deploy blue-team persistent mechanisms.  For example, when sysmon is killed, stopped, or removed, a permanent wmi subscription will run a powershell script to fully reinstall sysmon.  This is in place to restart the windows firewall, termservices(RDP), and winlogbeat as well.
 
 Steps to run:
-1. drop the entire "run" directory on a domain controller
+1. drop the entire "run" directory on a domain controller into the C:\Windows\System32
 2. Unpack archive
-3. Drop run to C:\Windows\System32 (choice here was opsec)
-4. Browse to C:\Windows\System32 and run ad_script.ps1
-5. This will deploy everything.  You will be required to enter a few passwords along the way
-6. On each domain member, run the above code block.
-7. Enter the new local admin password
-8. Enjoy!
+3. Browse to C:\Windows\System32 and run ad_script.ps1
+4. This will deploy everything.  You will be required to enter a few passwords along the way
+5. On each domain member, run the above code block.
+6. Enter the new local admin password
+7. Enjoy!
 
 There may be extended steps along the way, and this script is a very large work in progress.  There may also be functionality that will just simply not work with PowerShell 2.0 and below, however I've written it to be easy to troubleshoot and change.
